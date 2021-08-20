@@ -1,0 +1,103 @@
+<template>
+  <!-- Material form login -->
+  <div class="login-dark">
+	  <h1>Login</h1>
+        <form @submit.prevent="login">
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input v-model="email" class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input v-model="password" class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Login</button></div>
+			<router-link to="/register"><a href="#" class="forgot">Dont have an account? Register here</a></router-link>
+		</form>
+    </div>
+  <!-- Material form login -->
+</template>
+
+<script>
+export default {
+  name: 'Login',
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login() {
+      const loginUser = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('login', loginUser)
+    }
+  }
+}
+</script>
+
+<style scoped>
+h1 {
+  color: rgb(177, 174, 174);
+}
+.login-dark {
+  height:575px;
+  background-size:cover;
+  position:relative;
+}
+
+.login-dark form {
+  max-width:320px;
+  width:90%;
+  background-color:#1e2833;
+  padding:40px;
+  border-radius:4px;
+  transform:translate(-50%, -50%);
+  position:absolute;
+  top:40%;
+  left:50%;
+  color:rgb(185, 181, 181);
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.login-dark .illustration {
+  text-align:center;
+  padding:15px 0 20px;
+  font-size:100px;
+  color:#2980ef;
+}
+
+.login-dark form .form-control {
+  background:none;
+  border:none;
+  border-bottom:1px solid #434a52;
+  border-radius:0;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+}
+
+.login-dark form .btn-primary {
+  background:#214a80;
+  border:none;
+  border-radius:4px;
+  padding:11px;
+  box-shadow:none;
+  margin-top:26px;
+  text-shadow:none;
+  outline:none;
+}
+
+.login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+  background:#214a80;
+  outline:none;
+}
+
+.login-dark form .forgot {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+</style>
