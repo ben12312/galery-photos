@@ -13,7 +13,7 @@ export default new Vuex.Store({
     },
     mutations: {
         filterPhoto(state, payload) {
-            state.NewMovie = payload
+            state.filterPhoto = payload
         },
         chagePage(state, payload) {
             state.pageCount = payload
@@ -60,7 +60,7 @@ export default new Vuex.Store({
                 url: `/photos`
             })
                 .then(response => {
-                    context.commit('newMovie', response.data.results)
+                    context.commit('filterPhoto', response.data.results)
                 })
                 .catch((err) => { console.log(err); })
         }
@@ -69,7 +69,7 @@ export default new Vuex.Store({
     },
     getters: {
         getFilterPhoto(state) {
-            return state.NewMovie
+            return state.filterPhoto
         },
         getPageCount(state) {
             return state.pageCount
